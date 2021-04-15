@@ -4,13 +4,6 @@
 
 .App-logo {
   height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
 
 .App-header {
@@ -25,14 +18,110 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: #09d3ac;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.notfound {
+  top: 50%;
+  color: red;
+}
+
+.digitalcentre {
+  text-align: center;
+}
+
+.navList {
+  float: right;
+}
+
+/* Style the navigation menu */
+.navbar {
+  width: 100%;
+  background-color: #555;
+  overflow: auto;
+}
+
+/* Navigation links */
+.navbar a {
+  float: left;
+  padding: 8px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+  width: 25%; /* Four equal-width links. If you have two links, use 50%, and 33.33% for three links, etc.. */
+  text-align: center; /* If you want the text to be centered */
+}
+
+/* Add a background color on mouse-over */
+.navbar a:hover {
+  background-color: #000;
+}
+
+/* Style the current/active link */
+.navbar a.active {
+  background-color: #4caf50;
+}
+
+/* Add responsiveness - on screens less than 500px, make the navigation links appear on top of each other, instead of next to each other */
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+    width: 100%;
+    text-align: left;
   }
-  to {
-    transform: rotate(360deg);
-  }
+}
+
+.mydiv {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  /* padding-left: 20px;
+  padding-right: 900px;
+  padding-top: 20px; */
+  padding-bottom: 20px;
+  margin-left: 112px;
+  margin-right: 112px;
+  background-color: bisque;
+}
+
+.event {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 30px;
+
+  margin-left: 112px;
+  margin-right: 112px;
+  background-color: bisque;
+  color: black;
+}
+
+.nobullets {
+  list-style-type: none;
+  padding: 0%;
+}
+
+li {
+  margin: 10px 0;
+}
+
+.myheader {
+  background-color: crimson;
+  padding-bottom: 60px;
+  min-height: 100vh;
+}
+
+div {
+  height: 100%;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: crimson;
+  color: white;
+  text-align: center;
+  border: solid 2px orange;
 }

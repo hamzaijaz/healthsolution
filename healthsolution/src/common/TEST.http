@@ -1,0 +1,12 @@
+
+POST https://dfevents20200129060749.azurewebsites.net/api/createevent?code=hnChhxjHX89V4OvaTvJLzwlZ9z58dWJpZjBjvUUQ1ucUFhjXcoTkQQ==
+
+{
+  "EventTitle": "Fundraiser for Flood",
+  "EventDescription": "Fundraiser Lunch",
+  "EventType": "lunch",
+  "EventDate": "2020-02-25 15:02:00.000",
+  "EventCost": "20"
+}
+
+###
