@@ -6,12 +6,8 @@ import Button from "react-bootstrap/Button";
 function AddPatient() {
   const [submitted, setSubmitted] = useState(false);
 
-  const formPreventDefault = e => {
-    debugger
-    e.preventDefault()
-  }
-
   const submit = async (values) => {
+    //to prevent refresh on submitting
     values.preventDefault();
 
     async function submittt(values) {
@@ -29,8 +25,8 @@ function AddPatient() {
         PolicyNumber: values.target.elements.policyNumber.value
       }
     );
+    debugger
     }
-
     await submittt(values);
   }
 
