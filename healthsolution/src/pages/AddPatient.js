@@ -10,6 +10,30 @@ function AddPatient() {
     debugger
     e.preventDefault()
   }
+
+  const submit = async (values) => {
+    values.preventDefault();
+
+    async function submittt(values) {
+    var response = await authorisedClient.post(
+      "patients",
+      {
+        FirstName: values.target.elements.firstName.value,
+        LastName: values.target.elements.lastName.value,
+        DateOfBirth: values.target.elements.dateOfBirth.value,
+        Gender: values.target.elements.gender.value,
+        StreetAddress: values.target.elements.streetAddress.value,
+        Suburb: values.target.elements.suburb.value,
+        Postcode: values.target.elements.postcode.value,
+        HealthCoverType: values.target.elements.healthCoverType.value,
+        PolicyNumber: values.target.elements.policyNumber.value
+      }
+    );
+    }
+
+    await submittt(values);
+  }
+
   const onAddPatientSubmit = async (values, e) => {
     debugger
     alert('it works!');
@@ -86,7 +110,7 @@ function AddPatient() {
       </div>
 
       <div className="mydiv">
-        <form onSubmit={onAddPatientSubmit}>
+        <form onSubmit={submit}>
           <h2>Personal Details</h2>
           <div className="form-group">
             <label>First Name</label>
