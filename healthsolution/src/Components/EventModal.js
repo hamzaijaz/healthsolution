@@ -16,17 +16,6 @@ export const EventModal = ({
 }) => {
   //const [rsvpClicked, setRsvpClicked] = useState(false);
 
-  const doRsvp = () => {
-    async function Rsvp() {
-      await authorisedClient.post(
-        `rsvp/${eventIdentity}?code=hnChhxjHX89V4OvaTvJLzwlZ9z58dWJpZjBjvUUQ1ucUFhjXcoTkQQ==`
-      );
-    }
-    Rsvp();
-    //setRsvpClicked(true);
-    //window.location.reload(false);
-  };
-
   return (
     <Modal
       show={show}
@@ -42,14 +31,6 @@ export const EventModal = ({
           <p>Type: {eventType}</p>
           <p>Date: {eventDate}</p>
           <p>Cost: ${eventCost}</p>
-
-          <Button
-            className="event-modal-button"
-            variant="secondary"
-            onClick={doRsvp}
-          >
-            RSVP
-          </Button>
 
           <Button
             className="event-modal-button"

@@ -1,14 +1,40 @@
 import React, { useState } from "react";
 import ".././bootstrap.min.css";
 import authorisedClient from "../common/authorised-axios";
+import Button from "react-bootstrap/Button";
 
 function AddPatient() {
   const [submitted, setSubmitted] = useState(false);
 
-  const onAddPatientSubmit = async values => {
+  const formPreventDefault = e => {
+    debugger
+    e.preventDefault()
+  }
+  const onAddPatientSubmit = async (values, e) => {
+    debugger
+    alert('it works!');
+    e.preventDefault();
+
     async function submitt(values) {
+      // try{
+      // debugger
+      // var res = await authorisedClient.get(
+      //   `/patients/baf5ff7c-567d-4c3b-b8e9-634e2f08a6fb`,
+      //   {
+      //     PatientKey: "baf5ff7c-567d-4c3b-b8e9-634e2f08a6fb"
+      //   }
+      // );
+      // debugger
+      // }
+
+      // catch(e)
+      // {
+      //   debugger
+      // }
+
+      try{
       var response = await authorisedClient.post(
-        "createpatient?code=hnChhxjHX89V4OvaTvJLzwlZ9z58dWJpZjBjvUUQ1ucUFhjXcoTkQQ==",
+        "patients",
         {
           FirstName: values.target.elements.firstName.value,
           LastName: values.target.elements.lastName.value,
@@ -21,16 +47,34 @@ function AddPatient() {
           PolicyNumber: values.target.elements.policyNumber.value
         }
       );
+      alert('it works!');
+    e.preventDefault();
 
-      if (response.status === 200) {
+    if (response.status === 200) {
         setSubmitted(true);
         setTimeout(() => {
           setSubmitted(true);
-        }, 5000);
+        }, 6000);
       }
+      }
+      
+      // debugger
+      // if (response.status === 200) {
+      //   setSubmitted(true);
+      //   setTimeout(() => {
+      //     setSubmitted(true);
+      //   }, 5000);
+      // }
+      // }
+
+      catch(e)
+      {
+        //debugger
     }
-    await submitt(values);
   };
+    await submitt(values);
+}
+
 
   return (
     <div className="container-fluid myheader">
@@ -51,7 +95,7 @@ function AddPatient() {
               className="form-control"
               id="firstName"
               placeholder="e.g. John"
-              required
+              // required
             />
           </div>
 
@@ -62,7 +106,7 @@ function AddPatient() {
               className="form-control"
               id="lastName"
               placeholder="e.g. Snow"
-              required
+              // required
             />
           </div>
 
@@ -75,13 +119,15 @@ function AddPatient() {
               name="dateOfBirth"
               min="1753-06-01"
               max="9999-06-30"
-              required
+              // required
             />
           </div>
 
           <div className="form-group">
             <label>Gender: </label>{" "}
-            <select name="gender" id="gender" required>
+            <select name="gender" id="gender" 
+            // required
+            >
               <option value="choose">Choose</option>
               <option value="male">Male</option>
               <option value="female">Female</option>
@@ -96,7 +142,7 @@ function AddPatient() {
               className="form-control"
               id="streetAddress"
               placeholder="e.g. 300 Collins St"
-              required
+              // required
             />
           </div>
 
@@ -107,7 +153,7 @@ function AddPatient() {
               className="form-control"
               id="suburb"
               placeholder="e.g. Richmond"
-              required
+              // required
             />
           </div>
 
@@ -118,14 +164,16 @@ function AddPatient() {
               className="form-control"
               id="postcode"
               placeholder="e.g. 3000"
-              required
+              // required
             />
           </div>
 
           <h2>Health Cover Details</h2>
           <div className="form-group">
             <label>Health Cover Type: </label>{" "}
-            <select name="healthCoverType" id="healthCoverType" required>
+            <select name="healthCoverType" id="healthCoverType" 
+            // required
+            >
               <option value="choose">Choose</option>
               <option value="medicare">Medicare</option>
               <option value="bupa">Bupa</option>
@@ -139,7 +187,7 @@ function AddPatient() {
               type="text"
               className="form-control"
               id="policyNumber"
-              required
+              // required
             />
           </div>
 
@@ -152,9 +200,11 @@ function AddPatient() {
             <label className="form-check-label">Confirm patient</label>
           </div>
 
-          <button type="submit" className="btn btn-primary">
-            Add Patient
-          </button>
+          {/* <input type="button" className="btn btn-primary" onClick={onAddPatientSubmit}/> */}
+          <Button type="submit" className="mt-2">
+              Submit
+            </Button>
+          
           {submitted && <span className="ml-2">submitted!</span>}
         </form>
       </div>

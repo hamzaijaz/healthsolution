@@ -8,9 +8,11 @@ export const ViewEvents = () => {
   useEffect(() => {
     async function getEvents() {
       let response = await authorisedClient.get(
-        `getallevents?code=hnChhxjHX89V4OvaTvJLzwlZ9z58dWJpZjBjvUUQ1ucUFhjXcoTkQQ==`
+        `patients`
       );
+      debugger
       setRes(response);
+      debugger
       //console.log(response);
     }
     getEvents();
@@ -20,22 +22,24 @@ export const ViewEvents = () => {
     <div className="container-fluid myheader">
       <div className="row">
         <div className="jumbotron col-10 offset-1 digitalcentre">
-          <h1>Current Events</h1>
-          <p>Following is the list of current events</p>
+          <h1>Stored Patients</h1>
+          <p>Following is the list of patients</p>
         </div>
       </div>
       {res.data && (
         <ul className="nobullets">
           {res.data.map(item => (
-            <li key={item.eventIdentity} style={{ cursor: "pointer" }}>
+            <li key={item.patientKey} style={{ cursor: "pointer" }}>
               <Event
-                title={item.eventTitle}
-                description={item.eventDescription}
-                eventIdentity={item.eventIdentity}
-                eventType={item.eventType}
-                eventDate={item.eventDate}
-                eventCost={item.eventCost}
-                rsvp={item.rsvp}
+                FirstName={item.firstName}
+                LastName={item.lastName}
+                DateOfBirth={item.dateOfBirth}
+                Gender={item.gender}
+                StreetAddress={item.streetAddress}
+                Suburb={item.suburb}
+                Postcode={item.postcode}
+                HealthCoverType={item.healthCoverType}
+                PolicyNumber={item.policyNumber}
               ></Event>
             </li>
           ))}
