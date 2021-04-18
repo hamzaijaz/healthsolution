@@ -4,6 +4,7 @@ import authorisedClient from "../common/authorised-axios";
 
 export const ViewEvents = () => {
   const [res, setRes] = useState([]);
+  const [noPatients, setNoPatients] = useState(false)
 
   useEffect(() => {
     async function getEvents() {
@@ -11,6 +12,11 @@ export const ViewEvents = () => {
         `patients`
       );
       setRes(response);
+
+      if (response.data.length === 0)
+      {
+        setNoPatients(true)
+      }
     }
     getEvents();
   }, []);
@@ -44,13 +50,11 @@ export const ViewEvents = () => {
           ))}
         </ul>
       )}
-
-      {/* <div className="row jumbotron col-10 offset-1">
-        <div className="w-100">
-          <h2>100</h2>
-          <p>this is event 1</p>
+      {noPatients && (
+        <div className="mydiv">
+          <p>Currently there are no patients stored</p>
         </div>
-      </div> */}
+      )}
     </div>
   );
 };

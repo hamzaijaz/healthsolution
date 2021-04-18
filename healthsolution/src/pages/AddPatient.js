@@ -50,7 +50,7 @@ function AddPatient() {
               {
                 setCaptchaIncrementKey(captchaIncrementKey + 1)
 
-                if (e.response.data.detail === "reCAPTCHA verification failed.")
+                if (e.response && e.response.data && e.response.data.detail === "reCAPTCHA verification failed.")
                 {
                   setDisplayText("Captcha verification failed. Please verify captcha and submit again")
                 }
