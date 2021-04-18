@@ -5,9 +5,9 @@ function Home() {
     <div className="container-fluid myheader">
       <div className="row">
         <div className="jumbotron col-10 offset-1 digitalcentre">
-        <div className="custom-background">
-          <h1>Welcome to My Health Solutions</h1>
-          <p>You can keep record of patients here</p>
+          <div className="custom-background">
+            <h1>Welcome to My Health Solutions</h1>
+            <p>You can keep record of patients here</p>
           </div>
         </div>
       </div>

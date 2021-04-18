@@ -10,7 +10,7 @@ function AddPatient() {
     const [captchaResponse, setCaptchaResponse] = useState("")
 
     const onChangeCaptcha = value => {
-      setCaptchaResponse(value)
+        setCaptchaResponse(value)
     }
 
     const submit = async (values) => {
@@ -18,40 +18,38 @@ function AddPatient() {
         values.preventDefault();
 
         async function submitRequest(values) {
-          try{
-            var response = await authorisedClient.post(
-                "patients",
-                {
-                    FirstName: values.target.elements.firstName.value,
-                    LastName: values.target.elements.lastName.value,
-                    DateOfBirth: values.target.elements.dateOfBirth.value,
-                    Gender: values.target.elements.gender.value,
-                    StreetAddress: values.target.elements.streetAddress.value,
-                    Suburb: values.target.elements.suburb.value,
-                    Postcode: values.target.elements.postcode.value,
-                    HealthCoverType: values.target.elements.healthCoverType.value,
-                    PolicyNumber: values.target.elements.policyNumber.value,
-                    RecaptchaResponse: captchaResponse
-                }
-            );
+            try {
+                var response = await authorisedClient.post(
+                    "patients",
+                    {
+                        FirstName: values.target.elements.firstName.value,
+                        LastName: values.target.elements.lastName.value,
+                        DateOfBirth: values.target.elements.dateOfBirth.value,
+                        Gender: values.target.elements.gender.value,
+                        StreetAddress: values.target.elements.streetAddress.value,
+                        Suburb: values.target.elements.suburb.value,
+                        Postcode: values.target.elements.postcode.value,
+                        HealthCoverType: values.target.elements.healthCoverType.value,
+                        PolicyNumber: values.target.elements.policyNumber.value,
+                        RecaptchaResponse: captchaResponse
+                    }
+                );
 
                 if (response.status === 201) {
                     setDisplayText("Patient was Successfully Added!")
                     setCaptchaIncrementKey(captchaIncrementKey + 1)
                 }
-              }
-              catch(e)
-              {
+            }
+            catch (e) {
                 setCaptchaIncrementKey(captchaIncrementKey + 1)
 
-                if (e.response && e.response.data && e.response.data.detail === "reCAPTCHA verification failed.")
-                {
-                  setDisplayText("Captcha verification failed. Please verify captcha and submit again")
+                if (e.response && e.response.data && e.response.data.detail === "reCAPTCHA verification failed.") {
+                    setDisplayText("Captcha verification failed. Please verify captcha and submit again")
                 }
-                
+
                 else
-                setDisplayText("There was a problem with the submission!");
-              }
+                    setDisplayText("There was a problem with the submission!");
+            }
         }
         await submitRequest(values);
     }
@@ -77,7 +75,7 @@ function AddPatient() {
                             className="form-control"
                             id="firstName"
                             placeholder="e.g. John"
-                        required
+                            required
                         />
                     </div>
 
@@ -88,7 +86,7 @@ function AddPatient() {
                             className="form-control"
                             id="lastName"
                             placeholder="e.g. Snow"
-                        required
+                            required
                         />
                     </div>
 
@@ -101,14 +99,14 @@ function AddPatient() {
                             name="dateOfBirth"
                             min="1753-06-01"
                             max="9999-06-30"
-                        required
+                            required
                         />
                     </div>
 
                     <div className="form-group">
                         <label>Gender: </label>{" "}
                         <select name="gender" id="gender"
-                        required
+                            required
                         >
                             <option value="choose">Choose</option>
                             <option value="male">Male</option>
@@ -124,7 +122,7 @@ function AddPatient() {
                             className="form-control"
                             id="streetAddress"
                             placeholder="e.g. 300 Collins St"
-                        required
+                            required
                         />
                     </div>
 
@@ -135,7 +133,7 @@ function AddPatient() {
                             className="form-control"
                             id="suburb"
                             placeholder="e.g. Richmond"
-                        required
+                            required
                         />
                     </div>
 
@@ -146,7 +144,7 @@ function AddPatient() {
                             className="form-control"
                             id="postcode"
                             placeholder="e.g. 3000"
-                        required
+                            required
                         />
                     </div>
 
@@ -154,7 +152,7 @@ function AddPatient() {
                     <div className="form-group">
                         <label>Health Cover Type: </label>{" "}
                         <select name="healthCoverType" id="healthCoverType"
-                        required
+                            required
                         >
                             <option value="choose">Choose</option>
                             <option value="medicare">Medicare</option>
@@ -169,16 +167,16 @@ function AddPatient() {
                             type="text"
                             className="form-control"
                             id="policyNumber"
-                        required
+                            required
                         />
                     </div>
-                    
+
                     {/* intentionally skipped client side validation of captcha to show error coming back from response */}
                     <ReCAPTCHA
-                    sitekey="6Ldpmq4aAAAAAPCOUMcu8gtt-ucLn3euX0J8irMP"
-                    key={captchaIncrementKey}
-                    onChange={onChangeCaptcha}
-                   />
+                        sitekey="6Ldpmq4aAAAAAPCOUMcu8gtt-ucLn3euX0J8irMP"
+                        key={captchaIncrementKey}
+                        onChange={onChangeCaptcha}
+                    />
 
                     <Button type="submit" className="mt-2">
                         Submit

@@ -13,8 +13,7 @@ export const ViewPatients = () => {
       );
       setRes(response);
 
-      if (response.data.length === 0)
-      {
+      if (response.data.length === 0) {
         setNoPatientsStored(true)
       }
     }
@@ -25,10 +24,10 @@ export const ViewPatients = () => {
     <div className="container-fluid myheader">
       <div className="row">
         <div className="jumbotron col-10 offset-1 digitalcentre">
-        <div className="custom-background">
-          <h1>Stored Patients</h1>
-          <p>Following is the list of patients</p>
-          <p>Click any entry to get patient details</p>
+          <div className="custom-background">
+            <h1>Stored Patients</h1>
+            <p>Following is the list of patients</p>
+            <p>Click any entry to get patient details</p>
           </div>
         </div>
       </div>

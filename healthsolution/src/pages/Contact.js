@@ -7,18 +7,18 @@ function Contact() {
     <div className="container-fluid myheader">
       <div className="row">
         <div className="jumbotron col-10 offset-1 digitalcentre">
-        <div className="custom-background">
-          <h1>Our Contact</h1>
-          <p>Our contact details are as follows</p>
+          <div className="custom-background">
+            <h1>Our Contact</h1>
+            <p>Our contact details are as follows</p>
           </div>
         </div>
       </div>
 
       <div className="mydiv">
-          <h1>Address</h1>
-          <span>Johnston Street, Abbotsford</span>
-          <p>Phone: (03) 123 456 789</p>
-        
+        <h1>Address</h1>
+        <span>Johnston Street, Abbotsford</span>
+        <p>Phone: (03) 123 456 789</p>
+
       </div>
     </div>
   );

@@ -14,7 +14,7 @@ export const Patient = ({
 }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => { setShow(false); };
-  const handleShow =  () => { setShow(true); }
+  const handleShow = () => { setShow(true); }
 
   return (
     <>
@@ -38,9 +38,7 @@ export const Patient = ({
           <div className="row">
             <span className="col-7"><b>Date of Birth:</b> {DateOfBirth}</span>
             <span className="col-7">click to get details</span>
-            </div>
-        </div>
-        <div>
+          </div>
         </div>
       </div>
     </>
