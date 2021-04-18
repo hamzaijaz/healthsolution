@@ -52,7 +52,7 @@ export const Event = ({
         PolicyNumber={PolicyNumber}
       />
 
-      <div className="patient">
+      <div className="patient w-50 offset-3">
         <div onClick={handleShow}>
           <h2>{FirstName} {LastName}</h2>
           <div className="row">
@@ -60,11 +60,9 @@ export const Event = ({
             <span className="col-7"><b>Gender:</b> {Gender}</span>
             <span className="col-7"><b>Health Cover Type:</b> {HealthCoverType}</span>
             <span className="col-7"><b>Policy Number:</b> {PolicyNumber}</span>
-            <div>
             <span className="col-7"><b>Street Address:</b> {StreetAddress}</span>
             <span className="col-7"><b>Suburb:</b> {Suburb}</span>
             <span className="col-7"><b>Post code:</b> {Postcode}</span>
-            </div>
             </div>
         </div>
         <div>

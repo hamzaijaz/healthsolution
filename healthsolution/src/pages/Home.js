@@ -17,14 +17,6 @@ function Home() {
         <p>If you want to view all the patients, click on 'View Patients' in navigation bar</p>
         <p>Click 'Contact' to see our contact details</p>
       </div>
-
-      {/* <Footer/>
-
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer> */}
     </div>
   );
 }

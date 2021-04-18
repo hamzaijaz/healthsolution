@@ -7,7 +7,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 function AddPatient() {
     const [submitted, setSubmitted] = useState(false);
     const [displaytext, setDisplayText] = useState("");
-    const [captchaIncrementKey, setCaptchaIncrementKey] = useState(1)
+    const [captchaIncrementKey, setCaptchaIncrementKey] = useState(1) //HACK: to reset captcha
     const [captchaResponse, setCaptchaResponse] = useState("")
 
     const onChangeCaptcha = value => {
@@ -73,7 +73,7 @@ function AddPatient() {
                 </div>
             </div>
 
-            <div className="mydiv">
+            <div className="mydiv w-50 offset-3">
                 <form onSubmit={submit}>
                     <h2>Personal Details</h2>
                     <div className="form-group">
@@ -178,7 +178,8 @@ function AddPatient() {
                         required
                         />
                     </div>
-
+                    
+                    {/* intentionally skipped client side validation of captcha to show error coming back from response */}
                     <ReCAPTCHA
                     sitekey="6Ldpmq4aAAAAAPCOUMcu8gtt-ucLn3euX0J8irMP"
                     key={captchaIncrementKey}
