@@ -21,6 +21,11 @@
   color: #09d3ac;
 }
 
+.custom-background
+{
+  background-color: #6fb3b8;
+}
+
 .notfound {
   top: 50%;
   color: red;
@@ -37,7 +42,7 @@
 /* Style the navigation menu */
 .navbar {
   width: 100%;
-  background-color: #555;
+  background-color: #388087;
   overflow: auto;
 }
 
@@ -54,7 +59,7 @@
 
 /* Add a background color on mouse-over */
 .navbar a:hover {
-  background-color: #000;
+  background-color: #63c8e2;
 }
 
 /* Style the current/active link */
@@ -82,17 +87,15 @@
   padding-bottom: 20px;
   margin-left: 112px;
   margin-right: 112px;
-  background-color: bisque;
+  background-color: #c2edce;
 }
 
 .patient {
   border-radius: 5px;
-  background-color: #f2f2f2;
   padding: 30px;
-
   margin-left: 112px;
   margin-right: 112px;
-  background-color: bisque;
+  background-color: #c2edce;
   color: black;
 }
 
@@ -106,7 +109,7 @@ li {
 }
 
 .myheader {
-  background-color: crimson;
+  background-color: #f6f6f2;
   padding-bottom: 60px;
   min-height: 100vh;
 }
@@ -120,8 +123,8 @@ div {
   left: 0;
   bottom: 0;
   width: 100%;
-  background-color: crimson;
+  background-color: #388087;
   color: white;
   text-align: center;
-  border: solid 2px orange;
+  border: solid 2px #388087;
 }
