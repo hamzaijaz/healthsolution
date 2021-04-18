@@ -3,7 +3,7 @@ import EventModal from "./EventModal";
 import Button from "react-bootstrap/Button";
 import authorisedClient from "../common/authorised-axios";
 
-export const Event = ({
+export const Patient = ({
   FirstName,
   LastName,
   DateOfBirth,
@@ -76,4 +76,4 @@ export const Event = ({
     </>
   );
 };
-export default Event;
+export default Patient;

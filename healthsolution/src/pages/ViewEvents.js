@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Event from "../Components/Event";
+import Patient from "../Components/Patient";
 import authorisedClient from "../common/authorised-axios";
 
 export const ViewEvents = () => {
@@ -35,7 +35,7 @@ export const ViewEvents = () => {
         <ul className="nobullets">
           {res.data.map(item => (
             <li key={item.patientKey} style={{ cursor: "pointer" }}>
-              <Event
+              <Patient
                 FirstName={item.firstName}
                 LastName={item.lastName}
                 DateOfBirth={item.dateOfBirth}
@@ -45,7 +45,7 @@ export const ViewEvents = () => {
                 Postcode={item.postcode}
                 HealthCoverType={item.healthCoverType}
                 PolicyNumber={item.policyNumber}
-              ></Event>
+              ></Patient>
             </li>
           ))}
         </ul>
