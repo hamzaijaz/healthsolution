@@ -20,7 +20,6 @@ function AddPatient() {
 
         async function submitRequest(values) {
           try{
-            debugger
             var response = await authorisedClient.post(
                 "patients",
                 {
@@ -37,9 +36,7 @@ function AddPatient() {
                 }
             );
 
-            debugger
                 if (response.status === 201) {
-                  
                     setSubmitted(true);
                     setDisplayText("Patient was Successfully Added!")
                 setCaptchaIncrementKey(captchaIncrementKey + 1)
@@ -52,6 +49,13 @@ function AddPatient() {
               catch(e)
               {
                 setCaptchaIncrementKey(captchaIncrementKey + 1)
+
+                if (e.response.data.detail === "reCAPTCHA verification failed.")
+                {
+                  setDisplayText("Captcha verification failed. Please verify captcha and submit again")
+                }
+                
+                else
                 setDisplayText("There was a problem with the submission!");
               }
         }
@@ -173,16 +177,6 @@ function AddPatient() {
                             id="policyNumber"
                         required
                         />
-                    </div>
-
-                    <div className="form-group form-check">
-                        <input
-                            type="checkbox"
-                            className="form-check-input"
-                            id="exampleCheck1"
-                            required
-                        />
-                        <label className="form-check-label">Confirm patient</label>
                     </div>
 
                     <ReCAPTCHA
