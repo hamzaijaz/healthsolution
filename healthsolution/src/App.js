@@ -9,8 +9,6 @@ import NotFoundPage from "./pages/NoFound";
 import AddPatient from "./pages/AddPatient";
 import ViewPatients from "./pages/ViewPatients";
 import Footer from "./Components/Footer";
-import Admin from "./pages/Admin";
-import authorisedClient from "../src/common/authorised-axios";
 
 function App() {
   return (
@@ -21,7 +19,6 @@ function App() {
         <Route path="/contact" component={Contact} />
         <Route path="/addpatient" component={AddPatient} />
         <Route path="/viewpatients" component={ViewPatients} />
-        <Route path="/admin" component={Admin} />
         <Route component={NotFoundPage} />
       </Switch>
       <Footer />

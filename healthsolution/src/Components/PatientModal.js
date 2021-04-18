@@ -25,8 +25,8 @@ export const PatientModal = ({
     >
       <Modal.Header>
         <div className="flex flex-justify flex-fill">
-        <p className=""><b>First Name:</b> {FirstName}</p>
-        <p className=""><b>Last Name:</b> {LastName}</p>
+            <p className=""><b>First Name:</b> {FirstName}</p>
+            <p className=""><b>Last Name:</b> {LastName}</p>
             <p className=""><b>Date of Birth:</b> {DateOfBirth}</p>
             <p className=""><b>Gender:</b> {Gender}</p>
             <p className=""><b>Health Cover Type:</b> {HealthCoverType}</p>
@@ -36,10 +36,9 @@ export const PatientModal = ({
             <p className=""><b>Post code:</b> {Postcode}</p> 
 
           <Button
-            className="patient-modal-close-button"
+            className="patient-modal-close-button mb-sm-0 mb-3 btn btn-secondary"
             type="button"
             variant="secondary"
-            className="mb-sm-0 mb-3 btn btn-secondary"
             onClick={handleClose}
           >
             Close

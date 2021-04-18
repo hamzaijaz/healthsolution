@@ -5,7 +5,6 @@ import Button from "react-bootstrap/Button";
 import ReCAPTCHA from "react-google-recaptcha";
 
 function AddPatient() {
-    const [submitted, setSubmitted] = useState(false);
     const [displaytext, setDisplayText] = useState("");
     const [captchaIncrementKey, setCaptchaIncrementKey] = useState(1) //HACK: to reset captcha
     const [captchaResponse, setCaptchaResponse] = useState("")
@@ -37,13 +36,8 @@ function AddPatient() {
             );
 
                 if (response.status === 201) {
-                    setSubmitted(true);
                     setDisplayText("Patient was Successfully Added!")
-                setCaptchaIncrementKey(captchaIncrementKey + 1)
-
-                    setTimeout(() => {
-                        setSubmitted(true);
-                    }, 6000);
+                    setCaptchaIncrementKey(captchaIncrementKey + 1)
                 }
               }
               catch(e)
