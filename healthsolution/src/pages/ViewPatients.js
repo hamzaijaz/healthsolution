@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import Patient from "../Components/Patient";
 import authorisedClient from "../common/authorised-axios";
 
-export const ViewEvents = () => {
+export const ViewPatients = () => {
   const [res, setRes] = useState([]);
-  const [noPatients, setNoPatients] = useState(false)
+  const [noPatientsStored, setNoPatientsStored] = useState(false)
 
   useEffect(() => {
-    async function getEvents() {
+    async function getAllPatients() {
       let response = await authorisedClient.get(
         `patients`
       );
@@ -15,10 +15,10 @@ export const ViewEvents = () => {
 
       if (response.data.length === 0)
       {
-        setNoPatients(true)
+        setNoPatientsStored(true)
       }
     }
-    getEvents();
+    getAllPatients();
   }, []);
 
   return (
@@ -28,6 +28,7 @@ export const ViewEvents = () => {
         <div className="custom-background">
           <h1>Stored Patients</h1>
           <p>Following is the list of patients</p>
+          <p>Click any entry to get patient details</p>
           </div>
         </div>
       </div>
@@ -50,7 +51,7 @@ export const ViewEvents = () => {
           ))}
         </ul>
       )}
-      {noPatients && (
+      {noPatientsStored && (
         <div className="mydiv">
           <p>Currently there are no patients stored</p>
         </div>
@@ -58,4 +59,4 @@ export const ViewEvents = () => {
     </div>
   );
 };
-export default ViewEvents;
+export default ViewPatients;
