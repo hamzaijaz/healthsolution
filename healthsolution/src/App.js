@@ -28,7 +28,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route path="/contact" component={Contact} />
         <Route path="/addpatient" component={AddPatient} />
-        <Route path="/viewevents" component={ViewEvents} />
+        <Route path="/viewpatients" component={ViewEvents} />
         <Route path="/admin" component={Admin} />
         <Route component={NotFoundPage} />
       </Switch>

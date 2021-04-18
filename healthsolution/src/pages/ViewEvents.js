@@ -10,10 +10,7 @@ export const ViewEvents = () => {
       let response = await authorisedClient.get(
         `patients`
       );
-      debugger
       setRes(response);
-      debugger
-      //console.log(response);
     }
     getEvents();
   }, []);

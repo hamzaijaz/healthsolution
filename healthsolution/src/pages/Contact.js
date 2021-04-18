@@ -16,8 +16,8 @@ function Contact() {
 
       <div className="mydiv">
           <h1>Address</h1>
-          <p>Johnston Street, Abbotsford</p>
-          <p>(03) 123 456 789</p>
+          <span>Johnston Street, Abbotsford</span>
+          <p>Phone: (03) 123 456 789</p>
         
       </div>
     </div>

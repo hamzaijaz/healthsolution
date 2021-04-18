@@ -58,13 +58,14 @@ export const Event = ({
           <div className="row">
             <span className="col-7"><b>Date of Birth:</b> {DateOfBirth}</span>
             <span className="col-7"><b>Gender:</b> {Gender}</span>
+            <span className="col-7"><b>Health Cover Type:</b> {HealthCoverType}</span>
+            <span className="col-7"><b>Policy Number:</b> {PolicyNumber}</span>
+            <div>
             <span className="col-7"><b>Street Address:</b> {StreetAddress}</span>
             <span className="col-7"><b>Suburb:</b> {Suburb}</span>
             <span className="col-7"><b>Post code:</b> {Postcode}</span>
-            <span className="col-7"><b>Health Cover Type:</b> {HealthCoverType}</span>
-            <span className="col-7"><b>Gender:</b> {Gender}</span>
-            <span className="col-7"><b>Policy Number:</b> {PolicyNumber}</span>
-          </div>
+            </div>
+            </div>
         </div>
         <div>
           {/* {LastName && (

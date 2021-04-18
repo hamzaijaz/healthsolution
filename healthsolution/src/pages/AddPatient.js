@@ -2,15 +2,25 @@ import React, { useState } from "react";
 import ".././bootstrap.min.css";
 import authorisedClient from "../common/authorised-axios";
 import Button from "react-bootstrap/Button";
+import ReCAPTCHA from "react-google-recaptcha";
 
 function AddPatient() {
     const [submitted, setSubmitted] = useState(false);
+    const [displaytext, setDisplayText] = useState("");
+    const [captchaIncrementKey, setCaptchaIncrementKey] = useState(1)
+    const [captchaResponse, setCaptchaResponse] = useState("")
+
+    const onChangeCaptcha = value => {
+      setCaptchaResponse(value)
+    }
 
     const submit = async (values) => {
         //to prevent refresh on submitting
         values.preventDefault();
 
-        async function submittt(values) {
+        async function submitRequest(values) {
+          try{
+            debugger
             var response = await authorisedClient.post(
                 "patients",
                 {
@@ -22,78 +32,31 @@ function AddPatient() {
                     Suburb: values.target.elements.suburb.value,
                     Postcode: values.target.elements.postcode.value,
                     HealthCoverType: values.target.elements.healthCoverType.value,
-                    PolicyNumber: values.target.elements.policyNumber.value
+                    PolicyNumber: values.target.elements.policyNumber.value,
+                    RecaptchaResponse: captchaResponse
                 }
             );
+
             debugger
-        }
-        await submittt(values);
-    }
-
-    const onAddPatientSubmit = async (values, e) => {
-        debugger
-        alert('it works!');
-        e.preventDefault();
-
-        async function submitt(values) {
-            // try{
-            // debugger
-            // var res = await authorisedClient.get(
-            //   `/patients/baf5ff7c-567d-4c3b-b8e9-634e2f08a6fb`,
-            //   {
-            //     PatientKey: "baf5ff7c-567d-4c3b-b8e9-634e2f08a6fb"
-            //   }
-            // );
-            // debugger
-            // }
-
-            // catch(e)
-            // {
-            //   debugger
-            // }
-
-            try {
-                var response = await authorisedClient.post(
-                    "patients",
-                    {
-                        FirstName: values.target.elements.firstName.value,
-                        LastName: values.target.elements.lastName.value,
-                        DateOfBirth: values.target.elements.dateOfBirth.value,
-                        Gender: values.target.elements.gender.value,
-                        StreetAddress: values.target.elements.streetAddress.value,
-                        Suburb: values.target.elements.suburb.value,
-                        Postcode: values.target.elements.postcode.value,
-                        HealthCoverType: values.target.elements.healthCoverType.value,
-                        PolicyNumber: values.target.elements.policyNumber.value
-                    }
-                );
-                alert('it works!');
-                e.preventDefault();
-
-                if (response.status === 200) {
+                if (response.status === 201) {
+                  
                     setSubmitted(true);
+                    setDisplayText("Patient was Successfully Added!")
+                setCaptchaIncrementKey(captchaIncrementKey + 1)
+
                     setTimeout(() => {
                         setSubmitted(true);
                     }, 6000);
                 }
-            }
-
-            // debugger
-            // if (response.status === 200) {
-            //   setSubmitted(true);
-            //   setTimeout(() => {
-            //     setSubmitted(true);
-            //   }, 5000);
-            // }
-            // }
-
-            catch (e) {
-                //debugger
-            }
-        };
-        await submitt(values);
+              }
+              catch(e)
+              {
+                setCaptchaIncrementKey(captchaIncrementKey + 1)
+                setDisplayText("There was a problem with the submission!");
+              }
+        }
+        await submitRequest(values);
     }
-
 
     return (
         <div className="container-fluid myheader">
@@ -116,7 +79,7 @@ function AddPatient() {
                             className="form-control"
                             id="firstName"
                             placeholder="e.g. John"
-                        // required
+                        required
                         />
                     </div>
 
@@ -127,7 +90,7 @@ function AddPatient() {
                             className="form-control"
                             id="lastName"
                             placeholder="e.g. Snow"
-                        // required
+                        required
                         />
                     </div>
 
@@ -140,14 +103,14 @@ function AddPatient() {
                             name="dateOfBirth"
                             min="1753-06-01"
                             max="9999-06-30"
-                        // required
+                        required
                         />
                     </div>
 
                     <div className="form-group">
                         <label>Gender: </label>{" "}
                         <select name="gender" id="gender"
-                        // required
+                        required
                         >
                             <option value="choose">Choose</option>
                             <option value="male">Male</option>
@@ -163,7 +126,7 @@ function AddPatient() {
                             className="form-control"
                             id="streetAddress"
                             placeholder="e.g. 300 Collins St"
-                        // required
+                        required
                         />
                     </div>
 
@@ -174,7 +137,7 @@ function AddPatient() {
                             className="form-control"
                             id="suburb"
                             placeholder="e.g. Richmond"
-                        // required
+                        required
                         />
                     </div>
 
@@ -185,7 +148,7 @@ function AddPatient() {
                             className="form-control"
                             id="postcode"
                             placeholder="e.g. 3000"
-                        // required
+                        required
                         />
                     </div>
 
@@ -193,7 +156,7 @@ function AddPatient() {
                     <div className="form-group">
                         <label>Health Cover Type: </label>{" "}
                         <select name="healthCoverType" id="healthCoverType"
-                        // required
+                        required
                         >
                             <option value="choose">Choose</option>
                             <option value="medicare">Medicare</option>
@@ -208,7 +171,7 @@ function AddPatient() {
                             type="text"
                             className="form-control"
                             id="policyNumber"
-                        // required
+                        required
                         />
                     </div>
 
@@ -217,16 +180,22 @@ function AddPatient() {
                             type="checkbox"
                             className="form-check-input"
                             id="exampleCheck1"
+                            required
                         />
                         <label className="form-check-label">Confirm patient</label>
                     </div>
 
-                    {/* <input type="button" className="btn btn-primary" onClick={onAddPatientSubmit}/> */}
+                    <ReCAPTCHA
+                    sitekey="6Ldpmq4aAAAAAPCOUMcu8gtt-ucLn3euX0J8irMP"
+                    key={captchaIncrementKey}
+                    onChange={onChangeCaptcha}
+                   />
+
                     <Button type="submit" className="mt-2">
                         Submit
-            </Button>
+                    </Button>
 
-                    {submitted && <span className="ml-2">submitted!</span>}
+                    <span className="ml-3">{displaytext}</span>
                 </form>
             </div>
         </div>
